@@ -10,20 +10,8 @@ import pandas as pd
 #import csv file to a dataframe
 df = pd.read_csv('data.csv')
 
-#for changinng values in original file
+#for changing values in original file
 #df.dropna(inplace = True)
-
-#print specific element
-# .loc is label based indexing
-specific_value = df.loc[27 , df.columns[1:2]]#prints 27th row and 1st column
-specific_value1 = df.loc[:,:]#all rows and columns
-specific_value2 = df.loc[0, df.columns[0]]#shows first row of first solumn
-specific_value3 = df.columns[0]#prints first column
-specific_value4 = df.columns.tolist()#prints all columns as list
-# .iloc position based indexing
-specific_value5 = df.iloc[:,2]#.name prints column name of respective column number
-specific_value6 = df.iloc[0,2]
-print(specific_value6)#prints specific element
 
 
 #for making a copy and doing the changes in the copied file
@@ -32,9 +20,21 @@ print(specific_value6)#prints specific element
 #replace nan values
 #df.fillna(130, inplace = True)
 
-#find rows and row number where nan values are
-nan_rows = df[df.isna().any(axis = 1)]
+
+#nan_rows = df[df.isna().any(axis = 1)]#find rows where nan values are
 nan_rows_number = df[df.isna().any(axis = 1)].index
-print(nan_rows_number)
+#df[i]#will give label named i, wont accept number
+print(df[df.isna().any(axis=1)])
+#new_df = df[df.columns[0]][df.fillna(130)]
+#print(new_df)
 
 
+x = df["Calories"].mean()
+print(x)
+print(df) 
+df["Calories"] = df["Calories"].fillna(x)
+print(df["Calories"])
+#print(df)
+nan_updated = df[df.isna().any(axis = 1)]
+#print(nan_updated)
+print(df[df.isna().any(axis = 1)])
