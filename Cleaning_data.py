@@ -6,6 +6,7 @@ Created on Wed Feb 26 12:39:53 2025
 """
 
 import pandas as pd
+#IEDITEDTHIS
 #import csv file to a dataframe
 df = pd.read_csv('data.csv')
 df.dropna(inplace = True)
