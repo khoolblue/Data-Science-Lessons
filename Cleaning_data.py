@@ -28,7 +28,7 @@ print(df[df.isna().any(axis=1)])
 #new_df = df[df.columns[0]][df.fillna(130)]
 #print(new_df)
 
-
+#replace nan values with mean
 x = df["Calories"].mean()
 print(x)
 print(df) 
@@ -38,3 +38,17 @@ print(df["Calories"])
 nan_updated = df[df.isna().any(axis = 1)]
 #print(nan_updated)
 print(df[df.isna().any(axis = 1)])
+
+
+#if value greater than 300 change it to 200
+for x in df.index:
+    if df.loc[x, 'Calories']>300:
+        df.loc[x, 'Calories'] = 200
+print(df)
+#if value greater than 300 drop the row
+for x in df.index:
+    if df.loc[x, 'Calories']>300:
+        df.drop(x, inplace = True)
+        
+print(df)
+df.drop_duplicates(inplace = True)#drops duplicate rows
